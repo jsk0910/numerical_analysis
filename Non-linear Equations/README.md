@@ -37,7 +37,8 @@ flowchart TD;
         whileIf1 -- "False" --> whileIf2
         whileIf2{"f < 0.0"} -- "True" --> whileIf2True
         subgraph whileIf2True
-            if1{"error < eps"} --> break
+            if1{"error < eps"} -- "True" --> break["break"]
+            if1 -- "False" --> else
             else["else: b=c"]
         end
     end
