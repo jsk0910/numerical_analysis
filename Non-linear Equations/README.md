@@ -23,7 +23,7 @@ $f(x) = a^2x + bx + c = 0$ 꼴의 방정식의 근을 구하는 문제를 비선
 > $n > \dfrac{log(b-a)-log(2\epsilon)}{log2}$이다.
 >
 > 이를 알고리즘으로 나타내면 아래와 같다.
-> ```mermaid
+```mermaid
 flowchart TD;
     INPUT["INPUT: a, b, eps"] --> A
     A["iter = 0"]
