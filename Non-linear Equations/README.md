@@ -50,3 +50,4 @@ flowchart TD;
     print["print result"]
     A --> while --> print
 ```
+> 이에 대한 코드는 https://github.com/jsk0910/numerical_analysis/blob/main/Non-linear%20Equations/bisection.c 에 있다.
