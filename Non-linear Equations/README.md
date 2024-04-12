@@ -33,6 +33,7 @@ flowchart TD;
     whileF["f = fa * fc"] --> whileIf1
     whileIf1{"f > 0.0"} -- "True" --> whileIf1True
     whileIf1True["a = c"]
+    whileIf1 -- "False" --> whileIf2
     whileIf2{"f < 0.0"} -- "True" --> whileIf2True
     end
 ```
