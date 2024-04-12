@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <math.h>>
+#include <math.h>
 
 #define F(x) (pow(x,3) - 2*x + 1)
 #define MAXITER 100
 
 void bisection(double a, double b, double eps);
 
-#ifdef F(x)
+#ifdef F
 int main(void) {
     double a, b, eps;
 
@@ -16,6 +16,8 @@ int main(void) {
     scanf("%lf", &b);
     printf("허용오차 입력: ");
     scanf("%lf", &eps);
+
+    bisection(a, b, eps);
 }
 #endif
 
@@ -47,13 +49,15 @@ void bisection(double a, double b, double eps) {
             if (fa == 0.) c = a;
             break;
         }
+
+        iter += 1;
     }
 
     if (iter < MAXITER) {
         printf("\n***** Result *****\n");
         printf("    iteration: %d\n", iter+1);
         printf("    x   = %f\n", c);
-        printf("    f(x)= %f\n", Function(c));
+        printf("    f(x)= %f\n", F(c));
         printf("    b-a = %f\n", b-a);
     } else {
         printf("Error: MAXITER 초과\n");
