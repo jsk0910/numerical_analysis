@@ -26,7 +26,9 @@ $f(x) = a^2x + bx + c = 0$ 꼴의 방정식의 근을 구하는 문제를 비선
 ```mermaid
 flowchart TD;
     A["iter = 0"] --> whileif
-    whileif{"iter < MAXITER // MAXITER is pre-defined"} --> while
-    while[["subroutine for calculate"]] --> B
-    B["c = 0.5 * (a+b)"]
+    whileif{"iter < MAXITER (MAXITER is pre-defined)"} --> while
+    subgraph while
+    whileA[["subroutine for calculate"]] --> whileB
+    whileB["c = 0.5 * (a+b)"]
+    end
 ```
