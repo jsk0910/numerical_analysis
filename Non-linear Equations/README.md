@@ -41,5 +41,13 @@ flowchart TD ;
             if1 -- "False" --> else
             else["else: b=c"]
         end
+        whileIf2 -- "False" --> Else
+        subgraph Else
+            if2{"fa == 0.0"} --> change
+            change["c = a"]
+            change --> b
+            b["break"]
+        end
+        Else --> b
     end
 ```
