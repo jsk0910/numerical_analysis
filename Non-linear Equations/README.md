@@ -25,15 +25,19 @@ $f(x) = a^2x + bx + c = 0$ 꼴의 방정식의 근을 구하는 문제를 비선
 > 이를 알고리즘으로 나타내면 아래와 같다.
 ```mermaid
 flowchart TD;
+    INPUT["INPUT: a, b, eps"]
     A["iter = 0"] --> whileif
     whileif{"iter < MAXITER (MAXITER is pre-defined)"} --> while
     subgraph while ["subroutine for calculate"]
-    whileB["c = 0.5 * (a+b)\n fa = F(a)\n fc = F(c)"] --> whileE
-    whileE["error = abs(b - a)"] --> whileF
-    whileF["f = fa * fc"] --> whileIf1
-    whileIf1{"f > 0.0"} -- "True" --> whileIf1True
-    whileIf1True["a = c"]
-    whileIf1 -- "False" --> whileIf2
-    whileIf2{"f < 0.0"} -- "True" --> whileIf2True
+        whileB["c = 0.5 * (a+b)\n fa = F(a)\n fc = F(c)"] --> whileE
+        whileE["error = abs(b - a)"] --> whileF
+        whileF["f = fa * fc"] --> whileIf1
+        whileIf1{"f > 0.0"} -- "True" --> whileIf1True
+        whileIf1True["a = c"]
+        whileIf1 -- "False" --> whileIf2
+        whileIf2{"f < 0.0"} -- "True" --> whileIf2True
+        subgraph whileIf2True
+            if1{"error < eps"}
+        end
     end
 ```
