@@ -25,7 +25,7 @@ $f(x) = a^2x + bx + c = 0$ 꼴의 방정식의 근을 구하는 문제를 비선
 > 이를 알고리즘으로 나타내면 아래와 같다.
 ```mermaid
 flowchart TD;
-    INPUT["INPUT: a, b, eps"]
+    ["INPUT: a, b, eps"]
     A["iter = 0"] --> whileif
     whileif{"iter < MAXITER (MAXITER is pre-defined)"} --> while
     subgraph while ["subroutine for calculate"]
