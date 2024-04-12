@@ -28,7 +28,7 @@ flowchart TD;
     A["iter = 0"] --> whileif
     whileif{"iter < MAXITER (MAXITER is pre-defined)"} --> while
     subgraph while
-    whileA[["subroutine for calculate"]] --> whileB
+    whileA"subroutine for calculate" --> whileB
     whileB["c = 0.5 * (a+b)"]
     end
 ```
