@@ -36,16 +36,16 @@ flowchart TD;
         whileIf1True["a = c"]
         whileIf1 -- "False" --> whileIf2
         whileIf2{"f < 0.0"} -- "True" --> if1
-        if1{"error < eps"} -- "True" --> break["break"]
+        if1{"error < eps"} -- "True" --> print
         if1 -- "False" --> else
         else["else: b=c"]
         whileIf2 -- "False" --> if2
             if2{"fa == 0.0"} --> change
             change["c = a"]
-            change --> b
-            b["break"]
+            change --> print
         iter["iter = iter + 1"]
         whileIf1True --> iter
         else --> iter
     end
+    print["print result"]
 ```
