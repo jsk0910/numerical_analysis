@@ -31,7 +31,7 @@ flowchart TD;
     whileB["c = 0.5 * (a+b)\n fa = F(a)\n fc = F(c)"] --> whileE
     whileE["error = abs(b - a)"] --> whileF
     whileF["f = fa * fc"] --> whileIf1
-    whileIf1{"f < 0.0"} --> whilef1True
+    whileIf1{"f < 0.0"} --> whileIf1True
     whileIf1True["a = c"]
     end
 ```
