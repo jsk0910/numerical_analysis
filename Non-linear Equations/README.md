@@ -35,19 +35,15 @@ flowchart TD;
         whileIf1{"f > 0.0"} -- "True" --> whileIf1True
         whileIf1True["a = c"]
         whileIf1 -- "False" --> whileIf2
-        whileIf2{"f < 0.0"} -- "True" --> whileIf2True
-        subgraph whileIf2True
-            if1{"error < eps"} -- "True" --> break["break"]
-            if1 -- "False" --> else
-            else["else: b=c"]
-        end
-        whileIf2 -- "False" --> Else
-        subgraph Else
+        whileIf2{"f < 0.0"} -- "True" --> if1
+        if1{"error < eps"} -- "True" --> break["break"]
+        if1 -- "False" --> else
+        else["else: b=c"]
+        whileIf2 -- "False" --> if2
             if2{"fa == 0.0"} --> change
             change["c = a"]
             change --> b
             b["break"]
-        end
         iter["iter = iter + 1"]
         whileIf1True --> iter
         else --> iter
