@@ -13,7 +13,7 @@ typedef struct RESULT {
     double error[MAXITER];
 }RESULT;
 
-RESULT bisection(double a, double b, double eps);
+RESULT falseposition(double a, double b, double eps);
 
 #ifdef F
 int main(void) {
@@ -27,20 +27,36 @@ int main(void) {
     scanf("%lf", &eps);
 
     RESULT res;
-    res = bisection(a, b, eps);
+    res = falseposition(a, b, eps);
+
+    printf("구간 : [%.3f, %.3f], EPS: %;f\n", a, b, eps);
+    printf("===============================\n");
+    printf("iter a b x f(x) error\n");
+    printf("===============================\n");
+
+    for (int i = 0; i < res.iter+1; i++) {
+        printf("[%3d] %lf %lf %lf %lf %lf\n", i+1, res.a[i], res.b[i], res.xs[i], F(res.xs[i]), res.error[i]);
+    }
+
+    printf("===== Result =====\n");
+    printf("iter: %d\n", res.iter + 1);
+    printf("x: %lf\n", res.x);
+    printf("f(x) : %lf\n", F(res.x));
+    printf("error: %lf\n", res.error[res.iter]);
 }
 #endif
 
-RESULT bisection(double a, double b, double eps) {
+RESULT falseposition(double a, double b, double eps) {
     RESULT result;
     double c;
-    double fa, fc, f;
+    double fa, fb, fc, f;
     double error;
     int iter = 0;
 
-    while (iter < MAXITER) {
-        c = 0.5 * (a + b);
+    while(iter < MAXITER) {
         fa = F(a);
+        fb = F(b);
+        c = (a * fb - b * fa) / (fb - fa);
         fc = F(c);
 
         error = fabs(b - a);
@@ -48,10 +64,8 @@ RESULT bisection(double a, double b, double eps) {
         result.b[iter] = b;
         result.error[iter] = error;
         result.xs[iter] = c;
-        
-        //printf("[%3d] %lf %lf %lf %lf %lf\n", iter+1, a, b, c, fc, error);
-        
-        f = fa * fc;
+
+        f = fc * fa;
         if (f > 0.) {
             a = c;
         } else if (f < 0.) {
@@ -66,5 +80,6 @@ RESULT bisection(double a, double b, double eps) {
     }
     result.iter = iter;
     result.x = c;
+
     return result;
 }
