@@ -5,7 +5,7 @@ $f(x) = a^2x + bx + c = 0$ 꼴의 방정식의 근을 구하는 문제를 비선
 이를 위해 다음과 같은 방법을 사용할 수 있다.
 
 - 구간법
-    + 이분법
+    + [이분법](#이분법)
     + 가위치법
 - 개구간법
     + 고정점 반복법
@@ -51,3 +51,7 @@ flowchart TD;
     A --> while --> print
 ```
 > 이에 대한 코드는 https://github.com/jsk0910/numerical_analysis/blob/main/Non-linear%20Equations/bisection.c 에 있다.
+
+#### 가위치법
+> 마찬가지로 구간법이다.  
+> 앞선 이분법과 달리 점 a와 점 b 사이에 직선을 긋고 해당 직선이 x축과 만나는 점을 c로 잡는다.
